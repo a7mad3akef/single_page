@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+    <head lang="en">
+        <meta charset="UTF-8">
+        <title>Single Web Page</title>
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+        
+        
+    </head>
+    <body>
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <ul class="nav navbar-nav">
+                <li class="active"><a href="#">Home</a></li>
+                </ul>
+            </div>
+        </nav> 
+        
+        <div class="container">
+            <h2>The pulled text from the DB</h2>
+            <form>
+              <div class="form-group">
+                <textarea class="form-control" rows="5" id="the-text"></textarea>
+              </div>
+              <button class="btn btn-success" type="button" id="change-btn">CHANGE <span class="glyphicon glyphicon-send"></span></button>
+            </form>
+        </div>
+
+        <script src="http://code.jquery.com/jquery-1.12.4.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+          
+        <script>   
+        $(function() {
+            var message = 0
+            $('#change-btn').click(function(e) {
+                message = message + 1
+                console.log(message)
+                $.ajax({
+                    type: "POST",
+                    url: "/change",
+                    data: {'message':'message'},
+                    success: function(response) {
+                        $('#the-text').val('');
+                        var answer = response.answer;
+                        console.log(answer)
+                        $("#the-text").val(answer);
+                        
+                    },
+                    error: function(error) {
+                        console.log(error);
+                    }
+                });
+            });
+        });
+        </script>
+       
+    </body>
+</html>
