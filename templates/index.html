@@ -20,9 +20,14 @@
         <div class="container">
             <h2>The pulled text from the DB</h2>
             <form>
+<!--
               <div class="form-group">
                 <textarea class="form-control" rows="5" id="the-text" readonly></textarea>
               </div>
+-->
+<div>
+	 	<a id="the-text"></link>
+</div>
               <button class="btn btn-success" type="button" id="change-btn">CHANGE <span class="glyphicon glyphicon-send"></span></button>
             </form>
         </div>
@@ -33,8 +38,11 @@
         <script>   
         $(function() {
             var message = 0
+	    var ttt = document.getElementById("the-text");
+	    /* var hhh = document.getElementByTagName('a')[0]; */
+	    var typ = document.createAttribute("href");
             $('#change-btn').click(function(e) {
-                message = message + 1
+                message = (message > 2)? 1: (message + 1);
                 console.log(message)
                 $.ajax({
                     type: "POST",
@@ -43,6 +51,9 @@
                     success: function(response) {
                         $('#the-text').val('');
                         var answer = response.answer;
+			ttt.textContent = answer; /* og */
+			typ.value = answer; /* og */
+			ttt.attributes.setNamedItem(typ);
                         console.log(answer)
                         $("#the-text").val(answer);
                         

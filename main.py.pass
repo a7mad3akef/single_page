@@ -20,13 +20,6 @@ cursor = connection.cursor()
 sql = ('select * from tbl_products_info')
 cursor.execute(sql)
 data = cursor.fetchall()
-
-# added
-sqlCount = ('select count(*) from tbl_products_info')
-cursor.execute(sqlCount)
-dataCount = cursor.fetchall()[0]['count(*)']
-print "Count: " + str(dataCount)
-
 # print (data)
 for item in data:
     print(item['name'])
@@ -45,7 +38,7 @@ def get_the_data():
     message =  str(request.form['message'])
     global counter
     the_text = data[counter]['name']
-    counter = (counter + 1) if (counter < dataCount - 1) else 0	
+    counter += 1
     print(the_text)
     return jsonify({ 'answer':the_text })
 
