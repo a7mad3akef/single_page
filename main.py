@@ -26,7 +26,7 @@ data = cursor.fetchall()
 sqlCount = ('select count(*) from tbl_products_info')
 cursor.execute(sqlCount)
 dataCount = cursor.fetchall()[0]['count(*)']
-print "Count: " + str(dataCount)
+print ("Count: " + str(dataCount))
 
 # print (data)
 # for item in data:
