@@ -51,9 +51,9 @@
                     success: function(response) {
                         $('#the-text').val('');
                         var answer = response.answer;
-			ttt.textContent = answer; /* og */
-			typ.value = answer; /* og */
-			ttt.attributes.setNamedItem(typ);
+                        ttt.textContent = answer; /* og */
+                        typ.value = answer; /* og */
+                        ttt.attributes.setNamedItem(typ);
                         console.log(answer)
                         $("#the-text").val(answer);
                         

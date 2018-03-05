@@ -2,19 +2,20 @@ import pymysql
 import pymysql.cursors
 
 from flask import Flask, render_template, request, jsonify
-
+import flask
+print(flask)
 # Connect to the database
-#connection = pymysql.connect(host='sql2.freemysqlhosting.net',
-#                             user='sql2224070',
-#                             password='xK3*yF7*',
-#                             db='sql2224070',
-#                             cursorclass=pymysql.cursors.DictCursor)
+connection = pymysql.connect(host='sql2.freemysqlhosting.net',
+                            user='sql2224070',
+                            password='xK3*yF7*',
+                            db='sql2224070',
+                            cursorclass=pymysql.cursors.DictCursor)
 
-connection = pymysql.connect(host='54.65.147.70',
-                             user='mtp',
-                             password='ahmedb',
-                             db='ahmedb',
-                             cursorclass=pymysql.cursors.DictCursor) 
+# connection = pymysql.connect(host='54.65.147.70',
+#                              user='mtp',
+#                              password='ahmedb',
+#                              db='ahmedb',
+#                              cursorclass=pymysql.cursors.DictCursor) 
 
 cursor = connection.cursor()
 sql = ('select * from tbl_products_info')
@@ -28,8 +29,8 @@ dataCount = cursor.fetchall()[0]['count(*)']
 print "Count: " + str(dataCount)
 
 # print (data)
-for item in data:
-    print(item['name'])
+# for item in data:
+#     print(item['name'])
 
 counter = 0    
 
