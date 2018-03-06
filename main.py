@@ -2,8 +2,8 @@ import pymysql
 import pymysql.cursors
 
 from flask import Flask, render_template, request, jsonify
-import flask
-print(flask)
+
+
 # Connect to the database
 connection = pymysql.connect(host='sql2.freemysqlhosting.net',
                             user='sql2224070',

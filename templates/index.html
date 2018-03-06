@@ -26,7 +26,7 @@
               </div>
 -->
 <div>
-	 	<a id="the-text"></link>
+	 	<a id="the-text"></a>
 </div>
               <button class="btn btn-success" type="button" id="change-btn">CHANGE <span class="glyphicon glyphicon-send"></span></button>
             </form>
@@ -35,7 +35,32 @@
         <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
           
-        <script>   
+        <script>
+
+        $( document ).ready(function() {
+            var ttt = document.getElementById("the-text");
+            /* var hhh = document.getElementByTagName('a')[0]; */
+            var typ = document.createAttribute("href");
+            $.ajax({
+                    type: "POST",
+                    url: "/change",
+                    data: {'message':'message'},
+                    success: function(response) {
+                        
+                        var answer = response.answer;
+                        ttt.textContent = answer; /* og */
+                        typ.value = answer; /* og */
+                        ttt.attributes.setNamedItem(typ);
+                        console.log(answer)
+                        $("#the-text").val(answer);
+                        
+                    },
+                    error: function(error) {
+                        console.log(error);
+                    }
+                });
+        });
+
         $(function() {
             var message = 0
 	    var ttt = document.getElementById("the-text");
